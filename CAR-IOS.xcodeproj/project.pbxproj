@@ -13,6 +13,8 @@
 		2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB624DAB8EB00EA4BDA /* Main.storyboard */; };
 		2805EABA24DAB8ED00EA4BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB924DAB8ED00EA4BDA /* Assets.xcassets */; };
 		2805EABD24DAB8ED00EA4BDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EABB24DAB8ED00EA4BDA /* LaunchScreen.storyboard */; };
+		2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD124DB14DB00EA4BDA /* TorchModule.mm */; };
+		E4ADCA671F90DFF56A7F809D /* libPods-CAR-IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75529088D90C9C471A97D806 /* libPods-CAR-IOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,12 @@
 		2805EAB924DAB8ED00EA4BDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2805EABC24DAB8ED00EA4BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2805EABE24DAB8ED00EA4BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2805EACF24DB14CC00EA4BDA /* TorchModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
+		2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAR-IOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		2805EAD124DB14DB00EA4BDA /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
+		35D637D7535FBA56F4FBAA62 /* Pods-CAR-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAR-IOS.debug.xcconfig"; path = "Target Support Files/Pods-CAR-IOS/Pods-CAR-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		75529088D90C9C471A97D806 /* libPods-CAR-IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CAR-IOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A0004CB9E2132648F17A97 /* Pods-CAR-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAR-IOS.release.xcconfig"; path = "Target Support Files/Pods-CAR-IOS/Pods-CAR-IOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ADCA671F90DFF56A7F809D /* libPods-CAR-IOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				2805EAAF24DAB8EB00EA4BDA /* CAR-IOS */,
 				2805EAAE24DAB8EB00EA4BDA /* Products */,
+				A490B7E24C9B4C66B3AEC008 /* Pods */,
+				A2E4D048CA207C00D1881AC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +67,7 @@
 		2805EAAF24DAB8EB00EA4BDA /* CAR-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				2805EACE24DB14A600EA4BDA /* TorchBridge */,
 				2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */,
 				2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */,
 				2805EAB424DAB8EB00EA4BDA /* ViewController.swift */,
@@ -67,6 +79,33 @@
 			path = "CAR-IOS";
 			sourceTree = "<group>";
 		};
+		2805EACE24DB14A600EA4BDA /* TorchBridge */ = {
+			isa = PBXGroup;
+			children = (
+				2805EACF24DB14CC00EA4BDA /* TorchModule.h */,
+				2805EAD124DB14DB00EA4BDA /* TorchModule.mm */,
+				2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */,
+			);
+			path = TorchBridge;
+			sourceTree = "<group>";
+		};
+		A2E4D048CA207C00D1881AC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75529088D90C9C471A97D806 /* libPods-CAR-IOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A490B7E24C9B4C66B3AEC008 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35D637D7535FBA56F4FBAA62 /* Pods-CAR-IOS.debug.xcconfig */,
+				F5A0004CB9E2132648F17A97 /* Pods-CAR-IOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +113,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2805EAC124DAB8ED00EA4BDA /* Build configuration list for PBXNativeTarget "CAR-IOS" */;
 			buildPhases = (
+				8C39D8D778AC8FAFD40CC204 /* [CP] Check Pods Manifest.lock */,
 				2805EAA924DAB8EB00EA4BDA /* Sources */,
 				2805EAAA24DAB8EB00EA4BDA /* Frameworks */,
 				2805EAAB24DAB8EB00EA4BDA /* Resources */,
@@ -99,6 +139,7 @@
 				TargetAttributes = {
 					2805EAAC24DAB8EB00EA4BDA = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -133,6 +174,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C39D8D778AC8FAFD40CC204 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CAR-IOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2805EAA924DAB8EB00EA4BDA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +206,7 @@
 			files = (
 				2805EAB524DAB8EB00EA4BDA /* ViewController.swift in Sources */,
 				2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */,
+				2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */,
 				2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,8 +349,10 @@
 		};
 		2805EAC224DAB8ED00EA4BDA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35D637D7535FBA56F4FBAA62 /* Pods-CAR-IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z54Z9MH796;
 				INFOPLIST_FILE = "CAR-IOS/Info.plist";
@@ -293,6 +362,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "peter.CAR-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CAR-IOS/TorchBridge/CAR-IOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,8 +371,10 @@
 		};
 		2805EAC324DAB8ED00EA4BDA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5A0004CB9E2132648F17A97 /* Pods-CAR-IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z54Z9MH796;
 				INFOPLIST_FILE = "CAR-IOS/Info.plist";
@@ -311,6 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "peter.CAR-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CAR-IOS/TorchBridge/CAR-IOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
