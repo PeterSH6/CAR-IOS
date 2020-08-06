@@ -1,24 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0l-pf-cZf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="Pb2-7B-WQb">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="G0l-pf-cZf" customClass="CARViewController" customModule="CAR_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mlB-jP-H1m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="saf-VF-b8e">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="organize" id="oH7-HG-clc">
+                                        <connections>
+                                            <action selector="importPhoto:" destination="G0l-pf-cZf" id="0QX-hm-NU8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAR DownScale" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDM-wV-qzo">
+                                <rect key="frame" x="136" y="56.5" width="149" height="19.5"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qPJ-9H-1zU">
+                                <rect key="frame" x="10" y="98" width="394" height="394"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="394" id="cU1-Ak-P1A"/>
+                                    <constraint firstAttribute="width" secondItem="qPJ-9H-1zU" secondAttribute="height" multiplier="1:1" id="l0j-kE-cVg"/>
+                                    <constraint firstAttribute="width" constant="394" id="tG3-iz-p7q"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vC-eN-f9y">
+                                <rect key="frame" x="171" y="572" width="72" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-RC-KBB">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="applyDownScale:" destination="G0l-pf-cZf" eventType="touchUpInside" id="gvX-sj-Bth"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="XiH-QX-cw3">
+                                        <rect key="frame" x="46" y="5" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="HiX-5C-dPs"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mh5-RC-KBB" firstAttribute="top" secondItem="3vC-eN-f9y" secondAttribute="top" id="16N-31-qiZ"/>
+                                    <constraint firstItem="XiH-QX-cw3" firstAttribute="leading" secondItem="mh5-RC-KBB" secondAttribute="trailing" id="7sy-c1-9Oi"/>
+                                    <constraint firstAttribute="bottom" secondItem="mh5-RC-KBB" secondAttribute="bottom" id="GGy-rc-IfM"/>
+                                    <constraint firstItem="XiH-QX-cw3" firstAttribute="centerY" secondItem="3vC-eN-f9y" secondAttribute="centerY" id="Ppr-h7-rwN"/>
+                                    <constraint firstItem="mh5-RC-KBB" firstAttribute="leading" secondItem="3vC-eN-f9y" secondAttribute="leading" id="SmC-Qd-YVh"/>
+                                    <constraint firstAttribute="width" secondItem="3vC-eN-f9y" secondAttribute="height" multiplier="12:5" id="oHs-oN-UUc"/>
+                                    <constraint firstAttribute="trailing" secondItem="XiH-QX-cw3" secondAttribute="trailing" constant="6" id="p2U-ff-9Uq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hDM-wV-qzo" firstAttribute="centerX" secondItem="saf-VF-b8e" secondAttribute="centerX" constant="3.5" id="8PX-WS-Yb8"/>
+                            <constraint firstItem="saf-VF-b8e" firstAttribute="trailing" secondItem="GhN-ap-pOB" secondAttribute="trailing" id="B8I-YO-NDI"/>
+                            <constraint firstItem="saf-VF-b8e" firstAttribute="leading" secondItem="GhN-ap-pOB" secondAttribute="leading" id="C2D-0w-BjO"/>
+                            <constraint firstItem="qPJ-9H-1zU" firstAttribute="leading" secondItem="GhN-ap-pOB" secondAttribute="leading" constant="10" id="Ehx-x6-SN5"/>
+                            <constraint firstItem="GhN-ap-pOB" firstAttribute="trailing" secondItem="qPJ-9H-1zU" secondAttribute="trailing" constant="10" id="Hh7-i7-0x0"/>
+                            <constraint firstItem="saf-VF-b8e" firstAttribute="top" secondItem="GhN-ap-pOB" secondAttribute="top" id="MWT-ge-mWA"/>
+                            <constraint firstItem="3vC-eN-f9y" firstAttribute="top" secondItem="qPJ-9H-1zU" secondAttribute="bottom" constant="80" id="PF7-Mk-wLm"/>
+                            <constraint firstItem="hDM-wV-qzo" firstAttribute="centerY" secondItem="saf-VF-b8e" secondAttribute="centerY" id="YfZ-7H-Scp"/>
+                            <constraint firstItem="hDM-wV-qzo" firstAttribute="leading" secondItem="GhN-ap-pOB" secondAttribute="leading" constant="136" id="jWe-VI-3TD"/>
+                            <constraint firstItem="3vC-eN-f9y" firstAttribute="centerX" secondItem="mlB-jP-H1m" secondAttribute="centerX" id="nFo-mO-RWK"/>
+                            <constraint firstItem="qPJ-9H-1zU" firstAttribute="top" secondItem="saf-VF-b8e" secondAttribute="bottom" constant="10" id="uYz-K4-yon"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GhN-ap-pOB"/>
                     </view>
+                    <connections>
+                        <outlet property="btnDownScale" destination="mh5-RC-KBB" id="cUQ-tG-oon"/>
+                        <outlet property="btnHolderView" destination="3vC-eN-f9y" id="knv-vg-vKA"/>
+                        <outlet property="imageView" destination="qPJ-9H-1zU" id="4ap-M6-LUz"/>
+                        <outlet property="loader" destination="XiH-QX-cw3" id="1ic-UB-KKP"/>
+                        <outlet property="loaderWithContrains" destination="HiX-5C-dPs" id="jYO-Gm-mOa"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlj-cX-2lS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1123.1884057971015" y="-79.017857142857139"/>
         </scene>
     </scenes>
 </document>

@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */; };
 		2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */; };
-		2805EAB524DAB8EB00EA4BDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB424DAB8EB00EA4BDA /* ViewController.swift */; };
 		2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB624DAB8EB00EA4BDA /* Main.storyboard */; };
 		2805EABA24DAB8ED00EA4BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB924DAB8ED00EA4BDA /* Assets.xcassets */; };
 		2805EABD24DAB8ED00EA4BDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EABB24DAB8ED00EA4BDA /* LaunchScreen.storyboard */; };
 		2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD124DB14DB00EA4BDA /* TorchModule.mm */; };
+		2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD524DBC41C00EA4BDA /* CARViewController.swift */; };
 		E4ADCA671F90DFF56A7F809D /* libPods-CAR-IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75529088D90C9C471A97D806 /* libPods-CAR-IOS.a */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +21,6 @@
 		2805EAAD24DAB8EB00EA4BDA /* CAR-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CAR-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2805EAB424DAB8EB00EA4BDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2805EAB724DAB8EB00EA4BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2805EAB924DAB8ED00EA4BDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2805EABC24DAB8ED00EA4BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +28,7 @@
 		2805EACF24DB14CC00EA4BDA /* TorchModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAR-IOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		2805EAD124DB14DB00EA4BDA /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
+		2805EAD524DBC41C00EA4BDA /* CARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARViewController.swift; sourceTree = "<group>"; };
 		35D637D7535FBA56F4FBAA62 /* Pods-CAR-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAR-IOS.debug.xcconfig"; path = "Target Support Files/Pods-CAR-IOS/Pods-CAR-IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		75529088D90C9C471A97D806 /* libPods-CAR-IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CAR-IOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A0004CB9E2132648F17A97 /* Pods-CAR-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAR-IOS.release.xcconfig"; path = "Target Support Files/Pods-CAR-IOS/Pods-CAR-IOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				2805EACE24DB14A600EA4BDA /* TorchBridge */,
 				2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */,
 				2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */,
-				2805EAB424DAB8EB00EA4BDA /* ViewController.swift */,
+				2805EAD524DBC41C00EA4BDA /* CARViewController.swift */,
 				2805EAB624DAB8EB00EA4BDA /* Main.storyboard */,
 				2805EAB924DAB8ED00EA4BDA /* Assets.xcassets */,
 				2805EABB24DAB8ED00EA4BDA /* LaunchScreen.storyboard */,
@@ -204,7 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2805EAB524DAB8EB00EA4BDA /* ViewController.swift in Sources */,
+				2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */,
 				2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */,
 				2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */,
 				2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */,
