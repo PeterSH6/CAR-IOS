@@ -88,12 +88,11 @@
                         <viewLayoutGuide key="safeArea" id="GhN-ap-pOB"/>
                     </view>
                     <connections>
-                        <outlet property="btnDownScale_" destination="G6f-91-rm8" id="Vtb-la-E0q"/>
+                        <outlet property="btnDownScale" destination="G6f-91-rm8" id="5sM-oA-ccC"/>
                         <outlet property="btnHolderView" destination="2Gk-bM-LN4" id="FLP-Ky-mI4"/>
-                        <outlet property="btnHolderView_" destination="2Gk-bM-LN4" id="dfj-Os-aGS"/>
                         <outlet property="imageView" destination="qPJ-9H-1zU" id="4ap-M6-LUz"/>
-                        <outlet property="loaderWithContrains_" destination="Ruu-FI-Yx6" id="a7h-kD-pPX"/>
-                        <outlet property="loader_" destination="LFx-3o-tMK" id="33N-7n-QCq"/>
+                        <outlet property="loader" destination="LFx-3o-tMK" id="XAu-cR-xgL"/>
+                        <outlet property="loaderWithContrains" destination="Ruu-FI-Yx6" id="S8L-YD-V3W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlj-cX-2lS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
