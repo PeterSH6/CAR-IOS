@@ -10,12 +10,15 @@ import UIKit
 
 class CARViewController: UIViewController{
 
-    
+   //MARK: - View
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var btnHolderView: UIView!
-    @IBOutlet weak var btnDownScale: UIButton!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var loaderWithContrains: NSLayoutConstraint!
+    @IBOutlet weak var btnDownScale: UIButton!
+    
+    //MARK: - ModelProvider
+    private lazy var modelProvider = ModelProvider(modelName: "kgn")
     
     var imagePicker = UIImagePickerController() //系统函数
     
@@ -70,6 +73,19 @@ class CARViewController: UIViewController{
         }
         
         self.isProcessing = true
+//        do{
+//            let DownScaleImage : UIImage = try self.modelProvider.predict(inputImage: image)
+//            //maybe use another view to contain the output image
+//            self.imageView.image = DownScaleImage
+//            self.isProcessing = false
+//        }
+//        catch{
+//            self.isProcessing = false
+//        }
+
+        
+        
+    
             
         /*
          self.isProcessing = true
