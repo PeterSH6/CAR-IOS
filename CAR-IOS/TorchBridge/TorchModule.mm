@@ -8,23 +8,34 @@
 
 #import <Foundation/Foundation.h>
 #import "TorchModule.h"
-#import <LibTorch/LibTorch.h>
+
 
 @implementation TorchModule {
  @protected
-  torch::jit::script::Module _impl;
+    torch::jit::script::Module kernel_generation_net;
+    torch::jit::script::Module upscale_net;
+    Downsampler downsample_net;
+    int scale;
+    int k_size;
+    int offset_unit;
 }
 
-//前面带有减号(-) 的方法为实例方法，必须使用类的实例才可以调用的。对应的有+号， 代表是类的静态方法，不需要实例化即可调用。
-
-
 //The initWithFileAtPath method is called from the Swift counterpart method. It passes the location of the model file. Because it was Defined in the TorchModule.h and are applied to marco NS_SWIFT_NAME
-- (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
-  self = [super init]; //???
+- (nullable instancetype)initWithFileAtPath:(NSString*)kgn_path usn_path:(NSString*)usn_path scale:(int)scale{
+  self = [super init];
   if (self) {
     try {
-      _impl = torch::jit::load(filePath.UTF8String);
-      _impl.eval(); //???
+        self->scale = scale;
+        self->k_size = scale * 3 + 1;
+        self->offset_unit = scale;
+        
+        kernel_generation_net = torch::jit::load(kgn_path.UTF8String);
+        kernel_generation_net.eval();
+        
+        downsample_net = Downsampler(self->scale,self->k_size,self->offset_unit);
+        
+        upscale_net = torch::jit::load(usn_path.UTF8String);
+        upscale_net.eval();
     } catch (const std::exception& exception) {
       NSLog(@"%s", exception.what());
       return nil;
@@ -37,25 +48,34 @@
 - (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
   try {
       //convert the imageBuffer into a tensor
-    at::Tensor tensor = torch::from_blob(imageBuffer, {1, 3, 224, 224}, at::kFloat);
-    torch::autograd::AutoGradMode guard(false);
-    //Note: Setting AutoGradMode to false indicates we wish to run inference with our model only (no training).
-    at::AutoNonVariableTypeMode non_var_type_mode(true);//???
-    auto outputTensor = _impl.forward({tensor}).toTensor();
-    float* floatBuffer = outputTensor.data_ptr<float>();
-    if (!floatBuffer) {
-      return nil;
+    //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
+      at::Tensor img = torch::rand({1,3,64,64});
+      
+      torch::autograd::AutoGradMode guard(false);
+      //Note: Setting AutoGradMode to false indicates we wish to run inference with our model only (no training).
+      at::AutoNonVariableTypeMode non_var_type_mode(true);
+      
+      auto all_kernels = kernel_generation_net.forward({img}).toTensor();
+      auto downscaled_img = downsample_net.forward(img, all_kernels);
+      downscaled_img = downscaled_img.clamp(0, 1);
+      downscaled_img = downscaled_img.round();
+      
+      auto reconstructed_img = upscale_net.forward({downscaled_img / 255.0}).toTensor();
+      
+      float* floatBuffer = reconstructed_img.data_ptr<float>();
+      if (!floatBuffer) {
+          return nil;
+      }
+      
+      NSMutableArray* results = [[NSMutableArray alloc] init];//？？？
+      for (int i = 0; i < 1000; i++) {
+          [results addObject:@(floatBuffer[i])];
+      }
+      return [results copy];
+    } catch (const std::exception& exception) {
+        NSLog(@"%s", exception.what());
     }
-    NSMutableArray* results = [[NSMutableArray alloc] init];//？？？
-    for (int i = 0; i < 1000; i++) {
-      [results addObject:@(floatBuffer[i])];
-    }
-    return [results copy];
-  } catch (const std::exception& exception) {
-    NSLog(@"%s", exception.what());
-  }
-  return nil;
+    return nil;
 }
 
 @end
-

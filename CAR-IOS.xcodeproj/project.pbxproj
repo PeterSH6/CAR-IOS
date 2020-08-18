@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F714BCA24EBA7E8009D283B /* GridSamplerFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F714BC824EBA7E8009D283B /* GridSamplerFunction.mm */; };
+		1F714BCB24EBA7E8009D283B /* Downsampler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F714BC924EBA7E8009D283B /* Downsampler.mm */; };
 		2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */; };
 		2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */; };
 		2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB624DAB8EB00EA4BDA /* Main.storyboard */; };
@@ -21,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F714BC224EBA6C5009D283B /* Downsampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downsampler.h; sourceTree = "<group>"; };
+		1F714BC424EBA6C5009D283B /* GridSamplerFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridSamplerFunction.h; sourceTree = "<group>"; };
+		1F714BC824EBA7E8009D283B /* GridSamplerFunction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GridSamplerFunction.mm; sourceTree = "<group>"; };
+		1F714BC924EBA7E8009D283B /* Downsampler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Downsampler.mm; sourceTree = "<group>"; };
 		2805EAAD24DAB8EB00EA4BDA /* CAR-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CAR-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +97,10 @@
 		2805EACE24DB14A600EA4BDA /* TorchBridge */ = {
 			isa = PBXGroup;
 			children = (
+				1F714BC924EBA7E8009D283B /* Downsampler.mm */,
+				1F714BC824EBA7E8009D283B /* GridSamplerFunction.mm */,
+				1F714BC224EBA6C5009D283B /* Downsampler.h */,
+				1F714BC424EBA6C5009D283B /* GridSamplerFunction.h */,
 				2805EACF24DB14CC00EA4BDA /* TorchModule.h */,
 				2805EAD124DB14DB00EA4BDA /* TorchModule.mm */,
 				2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */,
@@ -215,10 +225,12 @@
 			files = (
 				2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */,
 				28FB0ED624DD478300D9EDE7 /* ErrorType.swift in Sources */,
+				1F714BCB24EBA7E8009D283B /* Downsampler.mm in Sources */,
 				28FB0ED424DD447800D9EDE7 /* UIImage+Helper.swift in Sources */,
 				28FB0ED224DD3E1000D9EDE7 /* ModelProvider.swift in Sources */,
 				2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */,
 				2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */,
+				1F714BCA24EBA7E8009D283B /* GridSamplerFunction.mm in Sources */,
 				2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
