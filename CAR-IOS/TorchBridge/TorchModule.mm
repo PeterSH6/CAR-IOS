@@ -49,6 +49,9 @@
     //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
       at::Tensor img = torch::rand({1,3,64,64});
       
+      img = img.to(torch::kFloat32).transpose(0, 2).transpose(1, 2) / 255;
+      img = img.unsqueeze(0);   // 增加一维
+      
       torch::autograd::AutoGradMode guard(false);
       //Note: Setting AutoGradMode to false indicates we wish to run inference with our model only (no training).
       at::AutoNonVariableTypeMode non_var_type_mode(true);
