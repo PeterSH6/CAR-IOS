@@ -17,7 +17,7 @@ torch::Tensor GridSamplerFunction::forward(torch::Tensor img, torch::Tensor kern
     at::Tensor padded_img = ReflectionPad2d.forward({img}).toTensor();
 
     //at::Tensor output = padded_img.new_zeros();
-    at::Tensor output = torch::zeros({ b, c, int(h / downscale_factor), int(w / downscale_factor) },padded_img.options());   // 初始化输出
+    at::Tensor output = torch::zeros({ b, c, int(h / downscale_factor), int(w / downscale_factor) }, padded_img.options());   // 初始化输出
 
     adaptive_gridsampler_kernel_forward(padded_img, kernels, offsets_h, offsets_v, offset_unit, padding, output);
 

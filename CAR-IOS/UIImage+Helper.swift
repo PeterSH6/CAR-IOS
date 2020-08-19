@@ -51,11 +51,6 @@ extension UIImage{
         var normalizedBuffer: [Float32] = [Float32](repeating: 0, count: w * h * 3)
         // normalize the pixel buffer
         // see https://pytorch.org/hub/pytorch_vision_resnet/ for more detail
-        for i in 0 ..< w * h {
-            normalizedBuffer[i] = (Float32(rawBytes[i * 4 + 0]) / 255.0 - 0.485) / 0.229 // R
-            normalizedBuffer[w * h + i] = (Float32(rawBytes[i * 4 + 1]) / 255.0 - 0.456) / 0.224 // G
-            normalizedBuffer[w * h * 2 + i] = (Float32(rawBytes[i * 4 + 2]) / 255.0 - 0.406) / 0.225 // B
-        }
         return normalizedBuffer
     }
 }

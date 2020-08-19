@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 class ModelProvider{
     
     var model : TorchModule

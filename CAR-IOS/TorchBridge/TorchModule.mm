@@ -18,16 +18,18 @@
     int scale;
     int k_size;
     int offset_unit;
+    NSString* pad2d_path;
 }
 
 //The initWithFileAtPath method is called from the Swift counterpart method. It passes the location of the model file. Because it was Defined in the TorchModule.h and are applied to marco NS_SWIFT_NAME
-- (nullable instancetype)initWithFileAtPath:(NSString*)kgn_path usn_path:(NSString*)usn_path scale:(int)scale{
+- (nullable instancetype)initWithFileAtPath:(NSString*)kgn_path usn_path:(NSString*)usn_path pad2d_path:(NSString*)pad2d_path scale:(int)scale{
   self = [super init];
   if (self) {
     try {
         self->scale = scale;
         self->k_size = scale * 3 + 1;
         self->offset_unit = scale;
+        self->pad2d_path = pad2d_path;
         
         kernel_generation_net = torch::jit::load(kgn_path.UTF8String);
         kernel_generation_net.eval();
@@ -57,7 +59,7 @@
       at::AutoNonVariableTypeMode non_var_type_mode(true);
       
       auto all_kernels = kernel_generation_net.forward({img}).toTensor();
-      auto downscaled_img = Downsampler().forward(img, all_kernels, scale, k_size, offset_unit);
+      auto downscaled_img = Downsampler().forward(img, all_kernels, scale, k_size, offset_unit, self->pad2d_path.UTF8String);
       downscaled_img = downscaled_img.clamp(0, 1);
       downscaled_img = torch::round(downscaled_img * 255);
       
