@@ -56,9 +56,18 @@
       auto all_kernels = kernel_generation_net.forward({img}).toTensor();
       auto downscaled_img = Downsampler().forward(img, all_kernels, scale, k_size, offset_unit);
       downscaled_img = downscaled_img.clamp(0, 1);
-      downscaled_img = downscaled_img.round();
+      downscaled_img = torch::round(downscaled_img * 255);
       
       auto reconstructed_img = upscale_net.forward({downscaled_img / 255.0}).toTensor();
+      
+      reconstructed_img = torch::clamp(reconstructed_img, 0, 1) * 255;
+      reconstructed_img = GridSamplerFunction().Transpose(reconstructed_img);
+      reconstructed_img = reconstructed_img.to(torch::kInt8);
+      reconstructed_img = reconstructed_img.squeeze();
+      
+      downscaled_img = GridSamplerFunction().Transpose(downscaled_img);
+      downscaled_img = downscaled_img.to(torch::kInt8);
+      downscaled_img = downscaled_img.squeeze();
       
       float* floatBuffer = reconstructed_img.data_ptr<float>();
       if (!floatBuffer) {
