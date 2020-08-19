@@ -3,7 +3,7 @@
 
 using namespace std;
 
-torch::Tensor GridSamplerFunction::forward(torch::Tensor img, torch::Tensor kernels, torch::Tensor offsets_h, torch::Tensor offsets_v, const int offset_unit, const int padding, const int downscale_factor)
+torch::Tensor GridSamplerFunction::forward(torch::Tensor img, torch::Tensor kernels, torch::Tensor offsets_h, torch::Tensor offsets_v, const int offset_unit, const int padding, const int downscale_factor, const string pad2d_filepath)
 {
 	int b = img.size(0);
 	int c = img.size(1);
@@ -13,9 +13,11 @@ torch::Tensor GridSamplerFunction::forward(torch::Tensor img, torch::Tensor kern
 	assert(int(h / downscale_factor) == kernels.size(2));
 	assert(int(w / downscale_factor) == kernels.size(3));
 
-	at::Tensor padded_img = torch::nn::ReflectionPad2d(padding)(img);
+    torch::jit::script::Module ReflectionPad2d = torch::jit::load(pad2d_filepath);
+    at::Tensor padded_img = ReflectionPad2d.forward({img}).toTensor();
 
-    at::Tensor output = padded_img.new_zeros({ b,c,int(h / downscale_factor),int(w / downscale_factor) });
+    //at::Tensor output = padded_img.new_zeros();
+    at::Tensor output = torch::zeros({ b, c, int(h / downscale_factor), int(w / downscale_factor) },padded_img.options());   // 初始化输出
 
     adaptive_gridsampler_kernel_forward(padded_img, kernels, offsets_h, offsets_v, offset_unit, padding, output);
 

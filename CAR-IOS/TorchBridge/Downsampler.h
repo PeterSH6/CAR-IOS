@@ -4,13 +4,8 @@
 
 class Downsampler :torch::nn::Module
 {
-private:
-	int ds;
-	int k_size;
-	int offset_unit;
-
 public:
-	Downsampler(int ds, int k_size, int offset_unit);
+	Downsampler();
 
-	torch::Tensor forward(torch::Tensor image, torch::Tensor cat_kernel);
+	static torch::Tensor forward(torch::Tensor image, torch::Tensor cat_kernel, int ds, int k_size, int offset_unit);
 };

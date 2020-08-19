@@ -1,13 +1,10 @@
 #include "Downsampler.h"
 
-Downsampler::Downsampler(int ds, int k_size, int offset_unit)
+Downsampler::Downsampler()
 {
-	this->ds = ds;
-	this->k_size = k_size;
-	this->offset_unit = offset_unit;
 }
 
-torch::Tensor Downsampler::forward(torch::Tensor image, torch::Tensor cat_kernel)
+torch::Tensor Downsampler::forward(torch::Tensor image, torch::Tensor cat_kernel, int ds, int k_size, int offset_unit)
 {
 	assert(pow(k_size, 2) == cat_kernel.size(1));
 

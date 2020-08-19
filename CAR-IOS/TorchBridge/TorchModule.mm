@@ -32,8 +32,6 @@
         kernel_generation_net = torch::jit::load(kgn_path.UTF8String);
         kernel_generation_net.eval();
         
-        downsample_net = Downsampler(self->scale,self->k_size,self->offset_unit);
-        
         upscale_net = torch::jit::load(usn_path.UTF8String);
         upscale_net.eval();
     } catch (const std::exception& exception) {
@@ -56,7 +54,7 @@
       at::AutoNonVariableTypeMode non_var_type_mode(true);
       
       auto all_kernels = kernel_generation_net.forward({img}).toTensor();
-      auto downscaled_img = downsample_net.forward(img, all_kernels);
+      auto downscaled_img = Downsampler().forward(img, all_kernels, scale, k_size, offset_unit);
       downscaled_img = downscaled_img.clamp(0, 1);
       downscaled_img = downscaled_img.round();
       
@@ -67,8 +65,8 @@
           return nil;
       }
       
-      NSMutableArray* results = [[NSMutableArray alloc] init];//？？？
-      for (int i = 0; i < 1000; i++) {
+      NSMutableArray* results = [[NSMutableArray alloc] init];  // array 初始化
+      for (int i = 0; i < img.size(1) * img.size(2) * img.size(3) / pow(scale, 2); i++) {
           [results addObject:@(floatBuffer[i])];
       }
       return [results copy];

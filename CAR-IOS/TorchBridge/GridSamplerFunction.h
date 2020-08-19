@@ -6,7 +6,7 @@
 
 class GridSamplerFunction{
 public:
-	static torch::Tensor forward(torch::Tensor img, torch::Tensor kernels, torch::Tensor offsets_h, torch::Tensor offsets_v, const int offset_unit, const int padding, const int downscale_factor);
+	static torch::Tensor forward(torch::Tensor img, torch::Tensor kernels, torch::Tensor offsets_h, torch::Tensor offsets_v, const int offset_unit, const int padding, const int downscale_factor, const string pad2d_filepath);
 
 private:
 	template <typename scalar_t> static void kernel_adaptive_gridsampler_update_output(
