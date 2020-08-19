@@ -73,6 +73,7 @@ class CARViewController: UIViewController{
         }
         
         self.isProcessing = true
+        
 //        do{
 //            let DownScaleImage : UIImage = try self.modelProvider.predict(inputImage: image)
 //            //maybe use another view to contain the output image
@@ -104,7 +105,7 @@ class CARViewController: UIViewController{
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -112,7 +113,7 @@ class CARViewController: UIViewController{
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 }
 
 

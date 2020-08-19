@@ -16,6 +16,7 @@
 		2805EABD24DAB8ED00EA4BDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EABB24DAB8ED00EA4BDA /* LaunchScreen.storyboard */; };
 		2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD124DB14DB00EA4BDA /* TorchModule.mm */; };
 		2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD524DBC41C00EA4BDA /* CARViewController.swift */; };
+		2896BB8E24ED2603003F160F /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896BB8D24ED2603003F160F /* OutputViewController.swift */; };
 		28FB0ED224DD3E1000D9EDE7 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */; };
 		28FB0ED424DD447800D9EDE7 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */; };
 		28FB0ED624DD478300D9EDE7 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED524DD478300D9EDE7 /* ErrorType.swift */; };
@@ -38,6 +39,7 @@
 		2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAR-IOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		2805EAD124DB14DB00EA4BDA /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		2805EAD524DBC41C00EA4BDA /* CARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARViewController.swift; sourceTree = "<group>"; };
+		2896BB8D24ED2603003F160F /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
 		28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		28FB0ED524DD478300D9EDE7 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */,
 				2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */,
 				28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */,
+				2896BB8D24ED2603003F160F /* OutputViewController.swift */,
 				28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */,
 				2805EAD524DBC41C00EA4BDA /* CARViewController.swift */,
 				28FB0ED524DD478300D9EDE7 /* ErrorType.swift */,
@@ -228,6 +231,7 @@
 				1F714BCB24EBA7E8009D283B /* Downsampler.mm in Sources */,
 				28FB0ED424DD447800D9EDE7 /* UIImage+Helper.swift in Sources */,
 				28FB0ED224DD3E1000D9EDE7 /* ModelProvider.swift in Sources */,
+				2896BB8E24ED2603003F160F /* OutputViewController.swift in Sources */,
 				2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */,
 				2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */,
 				1F714BCA24EBA7E8009D283B /* GridSamplerFunction.mm in Sources */,
