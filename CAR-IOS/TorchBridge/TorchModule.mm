@@ -6,15 +6,13 @@
 //  Copyright © 2020 生广明. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TorchModule.h"
-
+#import "Downsampler.h"
 
 @implementation TorchModule {
  @protected
     torch::jit::script::Module kernel_generation_net;
     torch::jit::script::Module upscale_net;
-    Downsampler downsample_net;
     int scale;
     int k_size;
     int offset_unit;
@@ -59,18 +57,19 @@
       at::AutoNonVariableTypeMode non_var_type_mode(true);
       
       auto all_kernels = kernel_generation_net.forward({img}).toTensor();
-      auto downscaled_img = Downsampler().forward(img, all_kernels, scale, k_size, offset_unit, self->pad2d_path.UTF8String);
+      auto downscaled_img = Downsampler::forward(img, all_kernels, scale, k_size, offset_unit, self->pad2d_path.UTF8String);
+      
       downscaled_img = downscaled_img.clamp(0, 1);
       downscaled_img = torch::round(downscaled_img * 255);
       
       auto reconstructed_img = upscale_net.forward({downscaled_img / 255.0}).toTensor();
       
       reconstructed_img = torch::clamp(reconstructed_img, 0, 1) * 255;
-      reconstructed_img = GridSamplerFunction().Transpose(reconstructed_img);
+      reconstructed_img = GridSamplerFunction::Transpose(reconstructed_img);
       reconstructed_img = reconstructed_img.to(torch::kInt8);
       reconstructed_img = reconstructed_img.squeeze();
       
-      downscaled_img = GridSamplerFunction().Transpose(downscaled_img);
+      downscaled_img = GridSamplerFunction::Transpose(downscaled_img);
       downscaled_img = downscaled_img.to(torch::kInt8);
       downscaled_img = downscaled_img.squeeze();
       

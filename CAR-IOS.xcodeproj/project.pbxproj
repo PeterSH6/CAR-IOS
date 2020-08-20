@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F714BCA24EBA7E8009D283B /* GridSamplerFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F714BC824EBA7E8009D283B /* GridSamplerFunction.mm */; };
-		1F714BCB24EBA7E8009D283B /* Downsampler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F714BC924EBA7E8009D283B /* Downsampler.mm */; };
+		1FE9EC6224EE257B00EA990E /* Downsampler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9EC6024EE257B00EA990E /* Downsampler.mm */; };
+		1FE9EC6324EE257B00EA990E /* GridSamplerFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9EC6124EE257B00EA990E /* GridSamplerFunction.mm */; };
 		2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */; };
 		2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */; };
 		2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB624DAB8EB00EA4BDA /* Main.storyboard */; };
@@ -24,10 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F714BC224EBA6C5009D283B /* Downsampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downsampler.h; sourceTree = "<group>"; };
-		1F714BC424EBA6C5009D283B /* GridSamplerFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridSamplerFunction.h; sourceTree = "<group>"; };
-		1F714BC824EBA7E8009D283B /* GridSamplerFunction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GridSamplerFunction.mm; sourceTree = "<group>"; };
-		1F714BC924EBA7E8009D283B /* Downsampler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Downsampler.mm; sourceTree = "<group>"; };
+		1FE9EC5E24EE257B00EA990E /* GridSamplerFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridSamplerFunction.h; sourceTree = "<group>"; };
+		1FE9EC5F24EE257B00EA990E /* Downsampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downsampler.h; sourceTree = "<group>"; };
+		1FE9EC6024EE257B00EA990E /* Downsampler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Downsampler.mm; sourceTree = "<group>"; };
+		1FE9EC6124EE257B00EA990E /* GridSamplerFunction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GridSamplerFunction.mm; sourceTree = "<group>"; };
 		2805EAAD24DAB8EB00EA4BDA /* CAR-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CAR-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,10 +100,10 @@
 		2805EACE24DB14A600EA4BDA /* TorchBridge */ = {
 			isa = PBXGroup;
 			children = (
-				1F714BC924EBA7E8009D283B /* Downsampler.mm */,
-				1F714BC824EBA7E8009D283B /* GridSamplerFunction.mm */,
-				1F714BC224EBA6C5009D283B /* Downsampler.h */,
-				1F714BC424EBA6C5009D283B /* GridSamplerFunction.h */,
+				1FE9EC5E24EE257B00EA990E /* GridSamplerFunction.h */,
+				1FE9EC6124EE257B00EA990E /* GridSamplerFunction.mm */,
+				1FE9EC6024EE257B00EA990E /* Downsampler.mm */,
+				1FE9EC5F24EE257B00EA990E /* Downsampler.h */,
 				2805EACF24DB14CC00EA4BDA /* TorchModule.h */,
 				2805EAD124DB14DB00EA4BDA /* TorchModule.mm */,
 				2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */,
@@ -228,13 +228,13 @@
 			files = (
 				2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */,
 				28FB0ED624DD478300D9EDE7 /* ErrorType.swift in Sources */,
-				1F714BCB24EBA7E8009D283B /* Downsampler.mm in Sources */,
+				1FE9EC6224EE257B00EA990E /* Downsampler.mm in Sources */,
 				28FB0ED424DD447800D9EDE7 /* UIImage+Helper.swift in Sources */,
 				28FB0ED224DD3E1000D9EDE7 /* ModelProvider.swift in Sources */,
 				2896BB8E24ED2603003F160F /* OutputViewController.swift in Sources */,
 				2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */,
 				2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */,
-				1F714BCA24EBA7E8009D283B /* GridSamplerFunction.mm in Sources */,
+				1FE9EC6324EE257B00EA990E /* GridSamplerFunction.mm in Sources */,
 				2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +301,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -311,6 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -318,6 +320,11 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/\"/**",
+					"\"${PODS_ROOT}/BuildHeaders\"/**",
+					"\"$(SRCROOT)/Pods/Headers/\"/**",
+				);
 			};
 			name = Debug;
 		};
@@ -359,18 +366,25 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USER_HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/\"/**",
+					"\"${PODS_ROOT}/BuildHeaders\"/**",
+					"\"$(SRCROOT)/Pods/Headers/\"/**",
+				);
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -383,6 +397,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z54Z9MH796;
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = "CAR-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -406,6 +421,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z54Z9MH796;
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = "CAR-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (

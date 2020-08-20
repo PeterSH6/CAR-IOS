@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <LibTorch/LibTorch.h>
-#import "Downsampler.h"
+//#import <LibTorch/LibTorch.h>
+
+
+//class Downsampler;
 
 NS_ASSUME_NONNULL_BEGIN
 
