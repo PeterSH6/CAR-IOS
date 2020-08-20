@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 //NS_UNAVAILABLE macro basically tells the compiler not to export that class, function or instance to Swift.
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)kgn_path usn_path:(NSString*)usn_path scale:(int)scale
-    NS_SWIFT_NAME(init(kgn_path:, usn_path:, scale:))NS_DESIGNATED_INITIALIZER;
+NS_SWIFT_NAME(init(kgn_path:, usn_path:, scale:))NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (nullable NSArray<NSNumber*>*)predictImage:(void*)imageBuffer NS_SWIFT_NAME(predict(image:));

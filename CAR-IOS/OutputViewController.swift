@@ -13,6 +13,10 @@ class OutputViewController: UIViewController {
     @IBOutlet weak var DownScaleImageView: UIImageView!
     @IBOutlet weak var UpScaleImageView: UIImageView!
     @IBOutlet weak var CloseButton: UIButton!
+    
+    var DownScaleImage : UIImage!
+    var UpScaleImahge : UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
