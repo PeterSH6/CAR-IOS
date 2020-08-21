@@ -17,14 +17,19 @@ class CARViewController: UIViewController{
     @IBOutlet weak var loaderWithContrains: NSLayoutConstraint!
     @IBOutlet weak var btnDownScale: UIButton!
     
+    @IBOutlet weak var btnShow: UIButton!
     //MARK: - ModelProvider
-    private lazy var modelProvider = ModelProvider(modelName: "kgn")
+    //private lazy var modelProvider = ModelProvider(modelName: "kgn")
+    
+    var DownScaleImage : UIImage!
+    var UpScaleImage : UIImage!
     
     var imagePicker = UIImagePickerController() //系统函数
     
     var isProcessing : Bool = false {
         didSet{ //didSet属性观察
             self.btnDownScale.isEnabled = !isProcessing
+            self.btnShow.isEnabled = !isProcessing
             self.isProcessing ? self.loader.startAnimating() : self.loader.stopAnimating()
             self.loaderWithContrains.constant = self.isProcessing ? 20.0 : 0.0
             UIView.animate(withDuration: 0.3) {
@@ -111,7 +116,10 @@ class CARViewController: UIViewController{
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Pass the selected object to the new view controller
+        let UI = segue.destination as! OutputViewController;
+        UI.DownScaleImageView.image = self.DownScaleImage
+        UI.UpScaleImageView.image = self.UpScaleImage
     }
     
 }
