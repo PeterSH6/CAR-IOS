@@ -86,11 +86,13 @@ class CARViewController: UIViewController{
         self.isProcessing = true
         do{
             let ProcessedImage = try modelProvider.predict(inputImage: image)
+            self.DownScaleImage = ProcessedImage
         }
         catch{
         
         }
-
+        
+        self.isProcessing = false
         
         
 //        do{

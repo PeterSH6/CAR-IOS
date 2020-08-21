@@ -34,7 +34,7 @@ class ModelProvider {
         
         let width : Int = (inputImage.cgImage?.width)!
         let height : Int = inputImage.cgImage!.height
-        let size : CGSize = CGSize(width: width % 8 * 8, height: height % 8 * 8)
+        let size : CGSize = CGSize(width: width / 8 * 8, height: height / 8 * 8)
         let ResizedImage = inputImage.resize(to: size)
 
         //1. Transfer the UIImage to the PixelBuffer(CVPixelBuffer or just []

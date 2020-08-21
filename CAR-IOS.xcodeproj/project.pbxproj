@@ -17,6 +17,9 @@
 		2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD124DB14DB00EA4BDA /* TorchModule.mm */; };
 		2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD524DBC41C00EA4BDA /* CARViewController.swift */; };
 		2896BB8E24ED2603003F160F /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896BB8D24ED2603003F160F /* OutputViewController.swift */; };
+		28A1A30224F00EC3006767CE /* kgn.pt in Resources */ = {isa = PBXBuildFile; fileRef = 28A1A2FF24F00EC3006767CE /* kgn.pt */; };
+		28A1A30324F00EC3006767CE /* usn.pt in Resources */ = {isa = PBXBuildFile; fileRef = 28A1A30024F00EC3006767CE /* usn.pt */; };
+		28A1A30424F00EC3006767CE /* pad2d.pt in Resources */ = {isa = PBXBuildFile; fileRef = 28A1A30124F00EC3006767CE /* pad2d.pt */; };
 		28FB0ED224DD3E1000D9EDE7 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */; };
 		28FB0ED424DD447800D9EDE7 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */; };
 		28FB0ED624DD478300D9EDE7 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED524DD478300D9EDE7 /* ErrorType.swift */; };
@@ -40,6 +43,9 @@
 		2805EAD124DB14DB00EA4BDA /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		2805EAD524DBC41C00EA4BDA /* CARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARViewController.swift; sourceTree = "<group>"; };
 		2896BB8D24ED2603003F160F /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
+		28A1A2FF24F00EC3006767CE /* kgn.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = kgn.pt; sourceTree = "<group>"; };
+		28A1A30024F00EC3006767CE /* usn.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = usn.pt; sourceTree = "<group>"; };
+		28A1A30124F00EC3006767CE /* pad2d.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = pad2d.pt; sourceTree = "<group>"; };
 		28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
 		28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		28FB0ED524DD478300D9EDE7 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 		2805EAAF24DAB8EB00EA4BDA /* CAR-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				28A1A2FE24F00E90006767CE /* models */,
 				2805EACE24DB14A600EA4BDA /* TorchBridge */,
 				2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */,
 				2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */,
@@ -109,6 +116,16 @@
 				2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */,
 			);
 			path = TorchBridge;
+			sourceTree = "<group>";
+		};
+		28A1A2FE24F00E90006767CE /* models */ = {
+			isa = PBXGroup;
+			children = (
+				28A1A2FF24F00EC3006767CE /* kgn.pt */,
+				28A1A30124F00EC3006767CE /* pad2d.pt */,
+				28A1A30024F00EC3006767CE /* usn.pt */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		A2E4D048CA207C00D1881AC2 /* Frameworks */ = {
@@ -188,7 +205,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A1A30324F00EC3006767CE /* usn.pt in Resources */,
+				28A1A30224F00EC3006767CE /* kgn.pt in Resources */,
 				2805EABD24DAB8ED00EA4BDA /* LaunchScreen.storyboard in Resources */,
+				28A1A30424F00EC3006767CE /* pad2d.pt in Resources */,
 				2805EABA24DAB8ED00EA4BDA /* Assets.xcassets in Resources */,
 				2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */,
 			);
