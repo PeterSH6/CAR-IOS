@@ -16,7 +16,6 @@ class CARViewController: UIViewController{
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var loaderWithContrains: NSLayoutConstraint!
     @IBOutlet weak var btnDownScale: UIButton!
-    
     @IBOutlet weak var btnShow: UIButton!
     
     //MARK: - ModelProvider
