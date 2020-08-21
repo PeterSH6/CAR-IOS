@@ -24,7 +24,10 @@ class CARViewController: UIViewController{
     var DownScaleImage : UIImage!
     var UpScaleImage : UIImage!
 
-    private lazy var modelProvider = ModelProvider(kgn_path: "put kgn path here", usn_path: "put usn path here", pad2d_path: "put pad2d path here", scale: 4)
+    let KGN_Path : String = Bundle.main.path(forResource: "kgn", ofType: "pt")!
+    let USN_Path : String = Bundle.main.path(forResource: "usn", ofType: "pt")!
+    let PAD_Path : String = Bundle.main.path(forResource: "pad2d", ofType: "pt")!
+    private lazy var modelProvider = ModelProvider(kgn_path: KGN_Path, usn_path: USN_Path, pad2d_path: PAD_Path, scale: 4)
 
     
     var imagePicker = UIImagePickerController() //系统函数
@@ -81,6 +84,14 @@ class CARViewController: UIViewController{
         }
         
         self.isProcessing = true
+        do{
+            let ProcessedImage = try modelProvider.predict(inputImage: image)
+        }
+        catch{
+        
+        }
+
+        
         
 //        do{
 //            let DownScaleImage : UIImage = try self.modelProvider.predict(inputImage: image)
@@ -93,9 +104,6 @@ class CARViewController: UIViewController{
 //        }
 
         
-        
-    
-            
         /*
          self.isProcessing = true
          self.process(input: image) { filteredImage, error in
