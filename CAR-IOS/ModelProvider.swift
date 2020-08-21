@@ -14,7 +14,7 @@ class ModelProvider{
     var model : TorchModule
     
     init(modelName : String) {
-        guard let fileAtPath : String = Bundle.main.path(forResource: modelName, ofType: "pt"),let model = TorchModule(fileAtPath: fileAtPath) else{
+        guard let fileAtPath : String = Bundle.main.path(forResource: modelName, ofType: "pt"),let model = TorchModule(kgn_path: fileAtPath) else{
             fatalError("Cannot find the model")
         }
         self.model = model

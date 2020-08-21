@@ -4,13 +4,8 @@
 //
 //  Created by 生广明 on 6/8/2020.
 //  Copyright © 2020 生广明. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
-//#import <LibTorch/LibTorch.h>
-
-
-//class Downsampler;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,8 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 //NS_UNAVAILABLE macro basically tells the compiler not to export that class, function or instance to Swift.
 
-- (nullable instancetype)initWithFileAtPath:(NSString*)kgn_path usn_path:(NSString*)usn_path scale:(int)scale
-    NS_SWIFT_NAME(init(kgn_path:, usn_path:, scale:))NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithKgnFile:(NSString*)kgn_path
+    NS_SWIFT_NAME(init(kgn_path:))NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)LoadUsnFile:(NSString*)usn_path NS_SWIFT_NAME(LoadUsnFile(usn_path:));
+- (nullable instancetype)LoadPad2dFile:(NSString*)pad2d_path NS_SWIFT_NAME(LoadPad2dFile(pad2d_path:));
+- (nullable instancetype)LoadScale:(int)scale NS_SWIFT_NAME(LoadScale(scale:));
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (nullable NSArray<NSNumber*>*)predictImage:(void*)imageBuffer NS_SWIFT_NAME(predict(image:));

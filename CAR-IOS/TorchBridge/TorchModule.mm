@@ -20,26 +20,51 @@
 }
 
 //The initWithFileAtPath method is called from the Swift counterpart method. It passes the location of the model file. Because it was Defined in the TorchModule.h and are applied to marco NS_SWIFT_NAME
-- (nullable instancetype)initWithFileAtPath:(NSString*)kgn_path usn_path:(NSString*)usn_path pad2d_path:(NSString*)pad2d_path scale:(int)scale{
+- (nullable instancetype)initWithKgnFile:(NSString*)kgn_path{
   self = [super init];
   if (self) {
     try {
-        self->scale = scale;
-        self->k_size = scale * 3 + 1;
-        self->offset_unit = scale;
-        self->pad2d_path = pad2d_path;
-        
         kernel_generation_net = torch::jit::load(kgn_path.UTF8String);
         kernel_generation_net.eval();
-        
-        upscale_net = torch::jit::load(usn_path.UTF8String);
-        upscale_net.eval();
     } catch (const std::exception& exception) {
       NSLog(@"%s", exception.what());
       return nil;
     }
   }
   return self;
+}
+
+- (nullable instancetype)LoadUsnFile:(NSString*)usn_path{
+    try{
+        upscale_net = torch::jit::load(usn_path.UTF8String);
+        upscale_net.eval();
+    } catch (const std::exception& exception) {
+        NSLog(@"%s", exception.what());
+        return nil;
+    }
+    return self;
+}
+
+- (nullable instancetype)LoadPad2dFile:(NSString*)pad2d_path{
+    try {
+        self->pad2d_path = pad2d_path;
+    } catch (const std::exception& exception) {
+      NSLog(@"%s", exception.what());
+      return nil;
+    }
+  return self;
+}
+
+- (nullable instancetype)LoadScale:(int)scale{
+    try {
+        self->scale = scale;
+        self->k_size = scale * 3 + 1;
+        self->offset_unit = scale;
+    } catch (const std::exception& exception) {
+      NSLog(@"%s", exception.what());
+      return nil;
+    }
+    return self;
 }
 
 //The predictImage gets the CVPixelBuffer of the image and converts it into an input tensor of the required shape. We then iterate through the scores of each label and return the index having the highest score back to Swift as the predicted output.
