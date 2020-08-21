@@ -18,11 +18,15 @@ class CARViewController: UIViewController{
     @IBOutlet weak var btnDownScale: UIButton!
     
     @IBOutlet weak var btnShow: UIButton!
+    
     //MARK: - ModelProvider
     //private lazy var modelProvider = ModelProvider(modelName: "kgn")
     
     var DownScaleImage : UIImage!
     var UpScaleImage : UIImage!
+
+    private lazy var modelProvider = ModelProvider(kgn_path: "put kgn path here", usn_path: "put usn path here", pad2d_path: "put pad2d path here", scale: 4)
+
     
     var imagePicker = UIImagePickerController() //系统函数
     
