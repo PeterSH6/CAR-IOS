@@ -8,6 +8,7 @@
 
 #import "TorchModule.h"
 #import "Downsampler.h"
+//#import <LibTorch/LibTorch.h>
 
 @implementation TorchModule {
  @protected
@@ -73,9 +74,10 @@
       //convert the imageBuffer into a tensor
     //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
       at::Tensor img = torch::rand({1,3,64,64});
+      //std::cout<<img;
       
-      img = img.to(torch::kFloat32).transpose(0, 2).transpose(1, 2) / 255;
-      img = img.unsqueeze(0);   // 增加一维
+      img = img.to(torch::kFloat) / 255.0;
+      //img = img.unsqueeze(0);   // 增加一维，如果上方生成的img已经有4个维度，就注释掉这句
       
       torch::autograd::AutoGradMode guard(false);
       //Note: Setting AutoGradMode to false indicates we wish to run inference with our model only (no training).
@@ -90,13 +92,16 @@
       auto reconstructed_img = upscale_net.forward({downscaled_img / 255.0}).toTensor();
       
       reconstructed_img = torch::clamp(reconstructed_img, 0, 1) * 255;
-      reconstructed_img = GridSamplerFunction::Transpose(reconstructed_img);
+      //reconstructed_img = GridSamplerFunction::Transpose(reconstructed_img);
       reconstructed_img = reconstructed_img.to(torch::kInt8);
       reconstructed_img = reconstructed_img.squeeze();
       
-      downscaled_img = GridSamplerFunction::Transpose(downscaled_img);
+      //downscaled_img = GridSamplerFunction::Transpose(downscaled_img);
       downscaled_img = downscaled_img.to(torch::kInt8);
       downscaled_img = downscaled_img.squeeze();
+      
+      // 此处生成的reconstructed和downscaled img都为3个维度，分别是channel, height, width
+      // 如果需要为了满足imagebuffer的需要进行更改，请调用transpose更改各维度的顺序
       
       float* floatBuffer = reconstructed_img.data_ptr<float>();
       if (!floatBuffer) {

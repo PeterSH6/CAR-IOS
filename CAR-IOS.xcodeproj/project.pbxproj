@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1FE9EC6224EE257B00EA990E /* Downsampler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9EC6024EE257B00EA990E /* Downsampler.mm */; };
 		1FE9EC6324EE257B00EA990E /* GridSamplerFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9EC6124EE257B00EA990E /* GridSamplerFunction.mm */; };
+		1FE9EC7124F021D300EA990E /* usn.pt in Resources */ = {isa = PBXBuildFile; fileRef = 1FE9EC6E24F021D300EA990E /* usn.pt */; };
+		1FE9EC7224F021D300EA990E /* kgn.pt in Resources */ = {isa = PBXBuildFile; fileRef = 1FE9EC6F24F021D300EA990E /* kgn.pt */; };
+		1FE9EC7324F021D300EA990E /* pad2d.pt in Resources */ = {isa = PBXBuildFile; fileRef = 1FE9EC7024F021D300EA990E /* pad2d.pt */; };
 		2805EAB124DAB8EB00EA4BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */; };
 		2805EAB324DAB8EB00EA4BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */; };
 		2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2805EAB624DAB8EB00EA4BDA /* Main.storyboard */; };
@@ -17,9 +20,6 @@
 		2805EAD224DB14DB00EA4BDA /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD124DB14DB00EA4BDA /* TorchModule.mm */; };
 		2805EAD624DBC41C00EA4BDA /* CARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2805EAD524DBC41C00EA4BDA /* CARViewController.swift */; };
 		2896BB8E24ED2603003F160F /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896BB8D24ED2603003F160F /* OutputViewController.swift */; };
-		28A1A30224F00EC3006767CE /* kgn.pt in Resources */ = {isa = PBXBuildFile; fileRef = 28A1A2FF24F00EC3006767CE /* kgn.pt */; };
-		28A1A30324F00EC3006767CE /* usn.pt in Resources */ = {isa = PBXBuildFile; fileRef = 28A1A30024F00EC3006767CE /* usn.pt */; };
-		28A1A30424F00EC3006767CE /* pad2d.pt in Resources */ = {isa = PBXBuildFile; fileRef = 28A1A30124F00EC3006767CE /* pad2d.pt */; };
 		28FB0ED224DD3E1000D9EDE7 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */; };
 		28FB0ED424DD447800D9EDE7 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */; };
 		28FB0ED624DD478300D9EDE7 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB0ED524DD478300D9EDE7 /* ErrorType.swift */; };
@@ -31,6 +31,9 @@
 		1FE9EC5F24EE257B00EA990E /* Downsampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downsampler.h; sourceTree = "<group>"; };
 		1FE9EC6024EE257B00EA990E /* Downsampler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Downsampler.mm; sourceTree = "<group>"; };
 		1FE9EC6124EE257B00EA990E /* GridSamplerFunction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GridSamplerFunction.mm; sourceTree = "<group>"; };
+		1FE9EC6E24F021D300EA990E /* usn.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = usn.pt; sourceTree = "<group>"; };
+		1FE9EC6F24F021D300EA990E /* kgn.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = kgn.pt; sourceTree = "<group>"; };
+		1FE9EC7024F021D300EA990E /* pad2d.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = pad2d.pt; sourceTree = "<group>"; };
 		2805EAAD24DAB8EB00EA4BDA /* CAR-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CAR-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,9 +46,6 @@
 		2805EAD124DB14DB00EA4BDA /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		2805EAD524DBC41C00EA4BDA /* CARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARViewController.swift; sourceTree = "<group>"; };
 		2896BB8D24ED2603003F160F /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
-		28A1A2FF24F00EC3006767CE /* kgn.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = kgn.pt; sourceTree = "<group>"; };
-		28A1A30024F00EC3006767CE /* usn.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = usn.pt; sourceTree = "<group>"; };
-		28A1A30124F00EC3006767CE /* pad2d.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = pad2d.pt; sourceTree = "<group>"; };
 		28FB0ED124DD3E1000D9EDE7 /* ModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
 		28FB0ED324DD447800D9EDE7 /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		28FB0ED524DD478300D9EDE7 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
@@ -66,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FE9EC6D24F021B000EA990E /* models */ = {
+			isa = PBXGroup;
+			children = (
+				1FE9EC6F24F021D300EA990E /* kgn.pt */,
+				1FE9EC7024F021D300EA990E /* pad2d.pt */,
+				1FE9EC6E24F021D300EA990E /* usn.pt */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		2805EAA424DAB8EB00EA4BDA = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +97,7 @@
 		2805EAAF24DAB8EB00EA4BDA /* CAR-IOS */ = {
 			isa = PBXGroup;
 			children = (
-				28A1A2FE24F00E90006767CE /* models */,
+				1FE9EC6D24F021B000EA990E /* models */,
 				2805EACE24DB14A600EA4BDA /* TorchBridge */,
 				2805EAB024DAB8EB00EA4BDA /* AppDelegate.swift */,
 				2805EAB224DAB8EB00EA4BDA /* SceneDelegate.swift */,
@@ -116,16 +126,6 @@
 				2805EAD024DB14DA00EA4BDA /* CAR-IOS-Bridging-Header.h */,
 			);
 			path = TorchBridge;
-			sourceTree = "<group>";
-		};
-		28A1A2FE24F00E90006767CE /* models */ = {
-			isa = PBXGroup;
-			children = (
-				28A1A2FF24F00EC3006767CE /* kgn.pt */,
-				28A1A30124F00EC3006767CE /* pad2d.pt */,
-				28A1A30024F00EC3006767CE /* usn.pt */,
-			);
-			path = models;
 			sourceTree = "<group>";
 		};
 		A2E4D048CA207C00D1881AC2 /* Frameworks */ = {
@@ -205,11 +205,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28A1A30324F00EC3006767CE /* usn.pt in Resources */,
-				28A1A30224F00EC3006767CE /* kgn.pt in Resources */,
+				1FE9EC7224F021D300EA990E /* kgn.pt in Resources */,
 				2805EABD24DAB8ED00EA4BDA /* LaunchScreen.storyboard in Resources */,
-				28A1A30424F00EC3006767CE /* pad2d.pt in Resources */,
 				2805EABA24DAB8ED00EA4BDA /* Assets.xcassets in Resources */,
+				1FE9EC7324F021D300EA990E /* pad2d.pt in Resources */,
+				1FE9EC7124F021D300EA990E /* usn.pt in Resources */,
 				2805EAB824DAB8EB00EA4BDA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
