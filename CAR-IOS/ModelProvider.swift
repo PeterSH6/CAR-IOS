@@ -40,6 +40,7 @@ class ModelProvider {
         //1. Transfer the UIImage to the PixelBuffer(CVPixelBuffer or just []
         
         var PixelBuffer : [Float32] = ResizedImage.normalized()!
+        //print(PixelBuffer);
 
         //2. Feed the PixelBuffer into the model and get the Kernel
         //3. Use the Kernel to process the Image and get the pixelBuffer

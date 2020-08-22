@@ -76,42 +76,51 @@
       at::Tensor img = torch::rand({1,3,64,64});
       //std::cout<<img;
       
-      img = img.to(torch::kFloat) / 255.0;
+      img = img.to(torch::kFloat);; // 255.0;
       //img = img.unsqueeze(0);   // 增加一维，如果上方生成的img已经有4个维度，就注释掉这句
       
       torch::autograd::AutoGradMode guard(false);
       //Note: Setting AutoGradMode to false indicates we wish to run inference with our model only (no training).
       at::AutoNonVariableTypeMode non_var_type_mode(true);
       
-      auto all_kernels = kernel_generation_net.forward({img}).toTensor();
+      auto all_kernels = kernel_generation_net.forward({ img }).toTensor();
       auto downscaled_img = Downsampler::forward(img, all_kernels, scale, k_size, offset_unit, self->pad2d_path.UTF8String);
       
       downscaled_img = downscaled_img.clamp(0, 1);
       downscaled_img = torch::round(downscaled_img * 255);
       
-      auto reconstructed_img = upscale_net.forward({downscaled_img / 255.0}).toTensor();
+      auto reconstructed_img = upscale_net.forward({ downscaled_img / 255.0 }).toTensor();
       
-      reconstructed_img = torch::clamp(reconstructed_img, 0, 1) * 255;
-      //reconstructed_img = GridSamplerFunction::Transpose(reconstructed_img);
-      reconstructed_img = reconstructed_img.to(torch::kInt8);
-      reconstructed_img = reconstructed_img.squeeze();
+      reconstructed_img = reconstructed_img.clamp(0, 1) * 255;  // 缩放至0-255之间
+      reconstructed_img = reconstructed_img.round();    // 取整
+
+      reconstructed_img = reconstructed_img.to(torch::kFloat);
+      reconstructed_img = reconstructed_img.squeeze();  // 清除第一个通道
       
-      //downscaled_img = GridSamplerFunction::Transpose(downscaled_img);
-      downscaled_img = downscaled_img.to(torch::kInt8);
+      downscaled_img = downscaled_img.to(torch::kFloat);
       downscaled_img = downscaled_img.squeeze();
       
       // 此处生成的reconstructed和downscaled img都为3个维度，分别是channel, height, width
       // 如果需要为了满足imagebuffer的需要进行更改，请调用transpose更改各维度的顺序
       
-      float* floatBuffer = reconstructed_img.data_ptr<float>();
-      if (!floatBuffer) {
+      float* reconstructed_img_buffer = reconstructed_img.data_ptr<float>();
+      float* downscaled_img_buffer = downscaled_img.data_ptr<float>();
+      
+      if (!reconstructed_img_buffer || !downscaled_img_buffer) {
           return nil;
       }
       
       NSMutableArray* results = [[NSMutableArray alloc] init];  // array 初始化
-      for (int i = 0; i < img.size(1) * img.size(2) * img.size(3) / pow(scale, 2); i++) {
-          [results addObject:@(floatBuffer[i])];
+      for (int i = 0; i < reconstructed_img.size(0) * reconstructed_img.size(1) * reconstructed_img.size(2); i++) {
+          [results addObject:@(reconstructed_img_buffer[i])];
       }
+      
+      for (int i = 0; i < downscaled_img.size(0) * downscaled_img.size(1) * downscaled_img.size(2); i++){
+          [results addObject:@(downscaled_img_buffer[i])];
+      }
+      
+      // 这里将reconstructed_img和downscale_img直接进行拼接，作为一个一维Float32数组返回
+      // 将buffer转为UImage时注意，reconstructed_img在前，downscale_img在后
       return [results copy];
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
