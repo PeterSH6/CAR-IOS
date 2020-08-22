@@ -18,17 +18,17 @@ func imageFromPixelValues(pixelValues: [UInt8]?, width: Int, height: Int) -> CGI
 {
     var imageRef: CGImage?
     if pixelValues != nil {
-        let imageDataPointer = UnsafeMutablePointer<UInt8>(pixelValues!)
+        let imageDataPointer = UnsafeMutablePointer<UInt8>(mutating: pixelValues!)
 
         let colorSpaceRef = CGColorSpaceCreateDeviceGray()
 
         let bitsPerComponent = 8
-        let bytesPerPixel = 1
+        let bytesPerPixel = 4
         let bitsPerPixel = bytesPerPixel * bitsPerComponent
         let bytesPerRow = bytesPerPixel * width
         let totalBytes = height * bytesPerRow
 
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.None.rawValue)
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
             .union(.ByteOrderDefault)
         let providerRef = CGDataProviderCreateWithData(nil, imageDataPointer, totalBytes, nil)
         imageRef = CGImageCreate(width,

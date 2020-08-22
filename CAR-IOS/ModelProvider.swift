@@ -45,7 +45,7 @@ class ModelProvider {
         //2. Feed the PixelBuffer into the model and get the Kernel
         //3. Use the Kernel to process the Image and get the pixelBuffer
         let OutputPixelBuffer = CARModel.predict(image: UnsafeMutableRawPointer(&PixelBuffer))
-
+        
         //4. Transfer the pixelBuffer back to the UIImage and return
 
         //只是为了防止报错
