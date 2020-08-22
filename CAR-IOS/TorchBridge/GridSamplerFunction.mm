@@ -24,14 +24,6 @@ torch::Tensor GridSamplerFunction::forward(torch::Tensor img, torch::Tensor kern
 	return output;
 }
 
-torch::Tensor GridSamplerFunction::Transpose(torch::Tensor tensor)
-{
-    torch::Tensor output = tensor.transpose(1, 3);
-    output = output.transpose(1, 2);
-    
-    return output;
-}
-
 template <typename scalar_t> void GridSamplerFunction::kernel_adaptive_gridsampler_update_output(const torch::Tensor img, const torch::Tensor kernels, const torch::Tensor offsets_h, const torch::Tensor offsets_v, const int offset_unit, const int padding, torch::Tensor& output, const size_t global_idx)
 {
     auto dim_b = output.size(0);
