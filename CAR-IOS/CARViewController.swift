@@ -8,52 +8,53 @@
 
 import UIKit
 
-class CARViewController: UIViewController{
+class CARViewController: UIViewController {
 
-   //MARK: - View
+    //MARK: - View
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var btnHolderView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var loaderWithContrains: NSLayoutConstraint!
     @IBOutlet weak var btnDownScale: UIButton!
     @IBOutlet weak var btnShow: UIButton!
-    
+
     //MARK: - ModelProvider
     //private lazy var modelProvider = ModelProvider(modelName: "kgn")
-    
-    var DownScaleImage : UIImage!
-    var UpScaleImage : UIImage!
 
-    let KGN_Path : String = Bundle.main.path(forResource: "kgn", ofType: "pt")!
-    let USN_Path : String = Bundle.main.path(forResource: "usn", ofType: "pt")!
-    let PAD_Path : String = Bundle.main.path(forResource: "pad2d", ofType: "pt")!
-    private lazy var modelProvider = ModelProvider(kgn_path: KGN_Path, usn_path: USN_Path, pad2d_path: PAD_Path, scale: 4)
+    var DownScaleImage: UIImage!
+    var UpScaleImage: UIImage!
 
-    
+    let KGN_Path: String = Bundle.main.path(forResource: "kgn", ofType: "pt")!
+    let USN_Path: String = Bundle.main.path(forResource: "usn", ofType: "pt")!
+    let PAD_Path: String = Bundle.main.path(forResource: "pad2d", ofType: "pt")!
+    let Scale: Int = 4
+    private lazy var modelProvider = ModelProvider(kgn_path: KGN_Path, usn_path: USN_Path, pad2d_path: PAD_Path, scale: Int32(Scale))
+
+
     var imagePicker = UIImagePickerController() //系统函数
-    
-    var isProcessing : Bool = false {
-        didSet{ //didSet属性观察
+
+    var isProcessing: Bool = false {
+        didSet { //didSet属性观察
             self.btnDownScale.isEnabled = !isProcessing
             self.btnShow.isEnabled = !isProcessing
             self.isProcessing ? self.loader.startAnimating() : self.loader.stopAnimating()
             self.loaderWithContrains.constant = self.isProcessing ? 20.0 : 0.0
             UIView.animate(withDuration: 0.3) {
-                self.isProcessing ? self.btnDownScale.setTitle("Processing...", for: .normal) : self.btnDownScale.setTitle("Down Scale",for: .normal)
+                self.isProcessing ? self.btnDownScale.setTitle("Processing...", for: .normal) : self.btnDownScale.setTitle("Down Scale", for: .normal)
                 self.view.layoutIfNeeded()//???
             }
-            
+
         }
     }
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isProcessing = false
-        
+
         self.btnDownScale.titleLabel?.textAlignment = .center
         self.btnDownScale.superview!.layer.cornerRadius = 4
-        
+
         /*
          Value of optional type 'UIView?' must be unwrapped to refer to member 'layer' of wrapped base type 'UIView'
          
@@ -62,9 +63,9 @@ class CARViewController: UIViewController{
          Force-unwrap using '!' to abort execution if the optional value contains 'nil'
          */
     }
-    
+
     //MARK: - Action
-    
+
     @IBAction func importPhoto(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             self.imagePicker.delegate = self
@@ -75,26 +76,48 @@ class CARViewController: UIViewController{
             print("Photo Library not available")
         }
     }
-    
-    
+
+
     @IBAction func applyDownScale(_ sender: Any) {
-        guard let image = self.imageView.image else{
+        guard let image = self.imageView.image else {
             print("Select an image")
             return
         }
-        
+
         self.isProcessing = true
-        do{
-            let ProcessedImage = try modelProvider.predict(inputImage: image)
+        do {
+            let result = try modelProvider.predict(inputImage: image)
+
+            var reconstructedPixelBuffer: [UInt16] = []
+            var downscaledPixelBuffer: [UInt16] = []
+
+            var outputIndex = 0
+            var reconstructedPixelCount: Int = Int(result.reconstructedHeight * result.reconstructedWidth) * 3
+            reconstructedPixelCount = 64 * 64 * 3
+            let downscaledPixelCount: Int = reconstructedPixelCount / (Scale << 2)
+
+            for _ in 0..<reconstructedPixelCount {
+                let value: UInt16? = result.pixelBuffer![outputIndex] as? UInt16
+                reconstructedPixelBuffer.append(value!)
+                outputIndex += 1
+            }
+
+            for _ in 0..<downscaledPixelCount {
+                let value: UInt16? = result.pixelBuffer![outputIndex] as? UInt16
+                downscaledPixelBuffer.append(value!)
+                outputIndex += 1
+            }
+
+            var ProcessedImage: UIImage = UIImage()
             self.DownScaleImage = ProcessedImage
         }
-        catch{
-        
+        catch {
+
         }
-        
+
         self.isProcessing = false
-        
-        
+
+
 //        do{
 //            let DownScaleImage : UIImage = try self.modelProvider.predict(inputImage: image)
 //            //maybe use another view to contain the output image
@@ -105,7 +128,7 @@ class CARViewController: UIViewController{
 //            self.isProcessing = false
 //        }
 
-        
+
         /*
          self.isProcessing = true
          self.process(input: image) { filteredImage, error in
@@ -121,9 +144,9 @@ class CARViewController: UIViewController{
          
          **/
     }
-    
 
-    
+
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -134,23 +157,23 @@ class CARViewController: UIViewController{
         UI.DownScaleImageView.image = self.DownScaleImage
         UI.UpScaleImageView.image = self.UpScaleImage
     }
-    
+
 }
 
 
-    // MARK: - UIImagePickerControllerDelegate
-    extension CARViewController : UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            self.dismiss(animated: true)
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-                self.imageView.image = pickedImage
-                self.imageView.backgroundColor = .clear
-            }
-            self.dismiss(animated: true)
-        }
-        
+// MARK: - UIImagePickerControllerDelegate
+extension CARViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
     }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.imageView.image = pickedImage
+            self.imageView.backgroundColor = .clear
+        }
+        self.dismiss(animated: true)
+    }
+
+}

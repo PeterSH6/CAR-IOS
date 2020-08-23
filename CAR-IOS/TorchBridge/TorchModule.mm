@@ -74,6 +74,7 @@
       //convert the imageBuffer into a tensor
     //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
       at::Tensor img = torch::rand({1,3,64,64});
+      std::cout<<img;
       //std::cout<<img;
       
       img = img.to(torch::kFloat);; // 255.0;
@@ -94,6 +95,7 @@
       reconstructed_img = reconstructed_img.clamp(0, 1) * 255;  // 缩放至0-255之间
       reconstructed_img = reconstructed_img.round();    // 取整
 
+      std::cout<<reconstructed_img;
       reconstructed_img = reconstructed_img.to(torch::kFloat);
       reconstructed_img = reconstructed_img.squeeze();  // 清除第一个通道
       
