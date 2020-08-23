@@ -19,9 +19,7 @@ class CARViewController: UIViewController {
     @IBOutlet weak var btnShow: UIButton!
 
     //MARK: - ModelProvider
-    //private lazy var modelProvider = ModelProvider(modelName: "kgn")
-
-    var DownScaleImage: UIImage!
+    var DownscaledImage: UIImage!
     var ReconstructedImage: UIImage!
 
     let KGN_Path: String = Bundle.main.path(forResource: "kgn", ofType: "pt")!
@@ -30,9 +28,7 @@ class CARViewController: UIViewController {
     let Scale: Int = 4
     private lazy var modelProvider = ModelProvider(kgn_path: KGN_Path, usn_path: USN_Path, pad2d_path: PAD_Path, scale: Int32(Scale))
 
-
     var imagePicker = UIImagePickerController() //系统函数
-
     var isProcessing: Bool = false {
         didSet { //didSet属性观察
             self.btnDownScale.isEnabled = !isProcessing
@@ -47,17 +43,14 @@ class CARViewController: UIViewController {
         }
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isProcessing = false
-
         self.btnDownScale.titleLabel?.textAlignment = .center
         self.btnDownScale.superview!.layer.cornerRadius = 4
     }
 
     //MARK: - Action
-
     @IBAction func importPhoto(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             self.imagePicker.delegate = self
@@ -83,7 +76,7 @@ class CARViewController: UIViewController {
             var downscaledPixelBuffer: [UInt8] = []
 
             var outputIndex = 0
-            var reconstructedPixelCount: Int = Int(result.reconstructedHeight * result.reconstructedWidth) * 3
+            let reconstructedPixelCount: Int = Int(result.reconstructedHeight * result.reconstructedWidth) * 3
             let downscaledPixelCount: Int = reconstructedPixelCount / (Scale << 2)
 
             for _ in 0..<reconstructedPixelCount {
@@ -101,39 +94,35 @@ class CARViewController: UIViewController {
             let downscaledImage = UIImage(pixelBuffer: downscaledPixelBuffer, width: result.reconstructedWidth / Scale, height: result.reconstructedHeight / Scale)
             let reconstructedImage = UIImage(pixelBuffer: reconstructedPixelBuffer, width: result.reconstructedWidth, height: result.reconstructedHeight)
 
-            self.DownScaleImage = downscaledImage
+            self.DownscaledImage = downscaledImage
             self.ReconstructedImage = reconstructedImage
         }
         catch {
             print(error)
         }
-
         self.isProcessing = false
     }
 
-
-
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller
-        let UI = segue.destination as! OutputViewController;
+        guard let UI = segue.destination as? OutputViewController else {return}
         do {
-//            UI.DownScaleImageView.image = self.DownScaleImage
-//            UI.UpScaleImageView.image = self.UpScaleImage
-            self.imageView.image = self.ReconstructedImage
+            UI.DownscaledImage = self.DownscaledImage
+            UI.ReconstructedImage = self.ReconstructedImage
         } catch {
             print("show error!")
         }
+//        if let outputView = storyboard?.instantiateViewController(withIdentifier: "Output") as? OutputViewController {
+//            outputView.DownScaleImageView.image = self.DownscaledImage
+//        }
     }
 }
 
-
 // MARK: - UIImagePickerControllerDelegate
 extension CARViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true)
     }
@@ -145,5 +134,4 @@ extension CARViewController: UIImagePickerControllerDelegate & UINavigationContr
         }
         self.dismiss(animated: true)
     }
-
 }

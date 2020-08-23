@@ -12,16 +12,23 @@ class OutputViewController: UIViewController {
     @IBOutlet weak var DownScaleImageView: UIImageView!
     @IBOutlet weak var UpScaleImageView: UIImageView!
     @IBOutlet weak var CloseButton: UIButton!
-    
-    var DownScaleImage : UIImage!
-    var UpScaleImahge : UIImage!
-    
+
+    var DownscaledImage: UIImage!
+    var ReconstructedImage: UIImage!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let downscaledImage = DownscaledImage {
+            DownScaleImageView.image = downscaledImage
+        }
+
+        if let reconstructedImage = ReconstructedImage {
+            UpScaleImageView.image = reconstructedImage
+        }
         // Do any additional setup after loading the view.
     }
-    
+
 
     @IBAction func Close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
