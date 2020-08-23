@@ -20,7 +20,7 @@ func imageFromPixelValues(pixelValues: [UInt8]?, width: Int, height: Int) -> CGI
     if pixelValues != nil {
         let imageDataPointer = UnsafeMutablePointer<UInt8>(mutating: pixelValues!)
 
-        let colorSpaceRef = CGColorSpaceCreateDeviceGray()
+        let colorSpaceRef = CGColorSpaceCreateDeviceRGB() //CGColorSpaceCreateDeviceGray()
 
         let bitsPerComponent = 8
         let bytesPerPixel = 4
