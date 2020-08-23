@@ -17,6 +17,8 @@
     int scale;
     int k_size;
     int offset_unit;
+    int height;
+    int width;
     NSString* pad2d_path;
 }
 
@@ -68,16 +70,40 @@
     return self;
 }
 
+- (nullable instancetype)LoadImageHeight:(int)height{
+    try {
+        if(height % 8 != 0){
+            @throw [NSException exceptionWithName:@"image size not match" reason:@"image height should be multiple of 8" userInfo:nil];
+        }
+        self->height=height;
+    } catch (const std::exception& exception) {
+      NSLog(@"%s", exception.what());
+      return nil;
+    }
+    return self;
+}
+
+- (nullable instancetype)LoadImageWidth:(int)width{
+    try {
+        if(width % 8 != 0){
+            @throw [NSException exceptionWithName:@"image size doesn't match" reason:@"image width should be multiple of 8" userInfo:nil];
+        }
+        self->width = width;
+    } catch (const std::exception& exception) {
+      NSLog(@"%s", exception.what());
+      return nil;
+    }
+    return self;
+}
+
 //The predictImage gets the CVPixelBuffer of the image and converts it into an input tensor of the required shape. We then iterate through the scores of each label and return the index having the highest score back to Swift as the predicted output.
 - (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
   try {
       //convert the imageBuffer into a tensor
-      //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
-      at::Tensor img = torch::rand({1,3,64,64});
-      //std::cout<<img;
-      //std::cout<<img;
+      at::Tensor img = torch::from_blob(imageBuffer, {1, 3, height, width}, at::kFloat);
+      //at::Tensor img = torch::rand({1,3,64,64});
       
-      img = img.to(torch::kFloat); // 255.0;
+      img = img.to(torch::kFloat) / 255.0; // 255.0;
       //img = img.unsqueeze(0);   // 增加一维，如果上方生成的img已经有4个维度，就注释掉这句
       
       torch::autograd::AutoGradMode guard(false);
@@ -94,8 +120,7 @@
       
       reconstructed_img = reconstructed_img.clamp(0, 1) * 255;  // 缩放至0-255之间
       reconstructed_img = reconstructed_img.round();    // 取整
-
-      std::cout<<reconstructed_img;
+      
       reconstructed_img = reconstructed_img.to(torch::kFloat);
       reconstructed_img = reconstructed_img.squeeze();  // 清除第一个通道
       

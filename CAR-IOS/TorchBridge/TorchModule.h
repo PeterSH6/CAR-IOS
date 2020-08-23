@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)LoadUsnFile:(NSString*)usn_path NS_SWIFT_NAME(LoadUsnFile(usn_path:));
 - (nullable instancetype)LoadPad2dFile:(NSString*)pad2d_path NS_SWIFT_NAME(LoadPad2dFile(pad2d_path:));
 - (nullable instancetype)LoadScale:(int)scale NS_SWIFT_NAME(LoadScale(scale:));
+- (nullable instancetype)LoadImageWidth:(int)width NS_SWIFT_NAME(LoadImageWidth(width:));
+- (nullable instancetype)LoadImageHeight:(int)height NS_SWIFT_NAME(LoadImageHeight(height:));
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (nullable NSArray<NSNumber*>*)predictImage:(void*)imageBuffer NS_SWIFT_NAME(predict(image:));

@@ -22,7 +22,7 @@ class CARViewController: UIViewController {
     //private lazy var modelProvider = ModelProvider(modelName: "kgn")
 
     var DownScaleImage: UIImage!
-    var UpScaleImage: UIImage!
+    var ReconstructedImage: UIImage!
 
     let KGN_Path: String = Bundle.main.path(forResource: "kgn", ofType: "pt")!
     let USN_Path: String = Bundle.main.path(forResource: "usn", ofType: "pt")!
@@ -54,14 +54,6 @@ class CARViewController: UIViewController {
 
         self.btnDownScale.titleLabel?.textAlignment = .center
         self.btnDownScale.superview!.layer.cornerRadius = 4
-
-        /*
-         Value of optional type 'UIView?' must be unwrapped to refer to member 'layer' of wrapped base type 'UIView'
-         
-         Chain the optional using '?' to access member 'layer' only for non-'nil' base values
-         
-         Force-unwrap using '!' to abort execution if the optional value contains 'nil'
-         */
     }
 
     //MARK: - Action
@@ -77,7 +69,6 @@ class CARViewController: UIViewController {
         }
     }
 
-
     @IBAction func applyDownScale(_ sender: Any) {
         guard let image = self.imageView.image else {
             print("Select an image")
@@ -88,61 +79,36 @@ class CARViewController: UIViewController {
         do {
             let result = try modelProvider.predict(inputImage: image)
 
-            var reconstructedPixelBuffer: [UInt16] = []
-            var downscaledPixelBuffer: [UInt16] = []
+            var reconstructedPixelBuffer: [UInt8] = []
+            var downscaledPixelBuffer: [UInt8] = []
 
             var outputIndex = 0
             var reconstructedPixelCount: Int = Int(result.reconstructedHeight * result.reconstructedWidth) * 3
-            reconstructedPixelCount = 64 * 64 * 3
             let downscaledPixelCount: Int = reconstructedPixelCount / (Scale << 2)
 
             for _ in 0..<reconstructedPixelCount {
-                let value: UInt16? = result.pixelBuffer![outputIndex] as? UInt16
+                let value: UInt8? = result.pixelBuffer![outputIndex] as? UInt8
                 reconstructedPixelBuffer.append(value!)
                 outputIndex += 1
             }
 
             for _ in 0..<downscaledPixelCount {
-                let value: UInt16? = result.pixelBuffer![outputIndex] as? UInt16
+                let value: UInt8? = result.pixelBuffer![outputIndex] as? UInt8
                 downscaledPixelBuffer.append(value!)
                 outputIndex += 1
             }
 
-            var ProcessedImage: UIImage = UIImage()
-            self.DownScaleImage = ProcessedImage
+            let downscaledImage = UIImage(pixelBuffer: downscaledPixelBuffer, width: result.reconstructedWidth / Scale, height: result.reconstructedHeight / Scale)
+            let reconstructedImage = UIImage(pixelBuffer: reconstructedPixelBuffer, width: result.reconstructedWidth, height: result.reconstructedHeight)
+
+            self.DownScaleImage = downscaledImage
+            self.ReconstructedImage = reconstructedImage
         }
         catch {
-
+            print(error)
         }
 
         self.isProcessing = false
-
-
-//        do{
-//            let DownScaleImage : UIImage = try self.modelProvider.predict(inputImage: image)
-//            //maybe use another view to contain the output image
-//            self.imageView.image = DownScaleImage
-//            self.isProcessing = false
-//        }
-//        catch{
-//            self.isProcessing = false
-//        }
-
-
-        /*
-         self.isProcessing = true
-         self.process(input: image) { filteredImage, error in
-             self.isProcessing = false
-             if let filteredImage = filteredImage {
-                 self.imageView.image = filteredImage
-             } else if let error = error {
-                 self.showError(error)
-             } else {
-                 self.showError(NSTError.unknown)
-             }
-         }
-         
-         **/
     }
 
 
@@ -154,10 +120,14 @@ class CARViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller
         let UI = segue.destination as! OutputViewController;
-        UI.DownScaleImageView.image = self.DownScaleImage
-        UI.UpScaleImageView.image = self.UpScaleImage
+        do {
+//            UI.DownScaleImageView.image = self.DownScaleImage
+//            UI.UpScaleImageView.image = self.UpScaleImage
+            self.imageView.image = self.ReconstructedImage
+        } catch {
+            print("show error!")
+        }
     }
-
 }
 
 

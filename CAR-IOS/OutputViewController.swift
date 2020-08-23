@@ -9,7 +9,6 @@
 import UIKit
 
 class OutputViewController: UIViewController {
-
     @IBOutlet weak var DownScaleImageView: UIImageView!
     @IBOutlet weak var UpScaleImageView: UIImageView!
     @IBOutlet weak var CloseButton: UIButton!

@@ -34,20 +34,22 @@ class ModelProvider {
 
         let width: Int = (inputImage.cgImage?.width)!
         let height: Int = inputImage.cgImage!.height
-        let size: CGSize = CGSize(width: Int(width / 8) * 8, height: Int(height / 8) * 8)
+        let size: CGSize = CGSize(width: Int(width / 80) * 8, height: Int(height / 80) * 8)
         let ResizedImage = inputImage.resize(to: size)
+
+        let origin_height: Int = Int(size.height)
+        let origin_width: Int = Int(size.width)
+
+        CARModel.LoadImageHeight(height: Int32(origin_height))
+        CARModel.LoadImageWidth(width: Int32(origin_width))
 
         //1. Transfer the UIImage to the PixelBuffer(CVPixelBuffer or just []
 
         var PixelBuffer: [Float32] = ResizedImage.normalized()!
-        //print(PixelBuffer);
 
         //2. Feed the PixelBuffer into the model and get the Kernel
         //3. Use the Kernel to process the Image and get the pixelBuffer
         let OutputPixelBuffer = CARModel.predict(image: UnsafeMutableRawPointer(&PixelBuffer))
-
-        let origin_height: Int = Int(size.height)
-        let origin_width: Int = Int(size.width)
 
         return (OutputPixelBuffer, origin_height, origin_width)
     }
