@@ -72,12 +72,12 @@
 - (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
   try {
       //convert the imageBuffer into a tensor
-    //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
+      //at::Tensor img = torch::from_blob(imageBuffer, {1, 3, 64, 64}, at::kFloat);
       at::Tensor img = torch::rand({1,3,64,64});
-      std::cout<<img;
+      //std::cout<<img;
       //std::cout<<img;
       
-      img = img.to(torch::kFloat);; // 255.0;
+      img = img.to(torch::kFloat); // 255.0;
       //img = img.unsqueeze(0);   // 增加一维，如果上方生成的img已经有4个维度，就注释掉这句
       
       torch::autograd::AutoGradMode guard(false);
