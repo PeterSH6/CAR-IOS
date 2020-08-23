@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0l-pf-cZf">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -26,7 +26,7 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAR DownScale" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDM-wV-qzo">
-                                <rect key="frame" x="136" y="56.5" width="149" height="19.5"/>
+                                <rect key="frame" x="136" y="56.666666666666657" width="149" height="19"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -34,9 +34,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qPJ-9H-1zU">
                                 <rect key="frame" x="10" y="98" width="394" height="394"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="394" id="cU1-Ak-P1A"/>
                                     <constraint firstAttribute="width" secondItem="qPJ-9H-1zU" secondAttribute="height" multiplier="1:1" id="l0j-kE-cVg"/>
-                                    <constraint firstAttribute="width" constant="394" id="tG3-iz-p7q"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gk-bM-LN4" userLabel="buttonHolderView">
@@ -133,33 +131,32 @@
                                     <action selector="Close:" destination="VCx-bW-HW5" eventType="touchUpInside" id="Reh-D3-aI9"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d48-u2-V3Q">
-                                <rect key="frame" x="87" y="76" width="240" height="240"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="txn-nc-z3S">
+                                <rect key="frame" x="45" y="377" width="324" height="324"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="d48-u2-V3Q" secondAttribute="height" multiplier="1:1" id="1Yt-uS-XnM"/>
-                                    <constraint firstAttribute="width" constant="240" id="1x7-7H-k6C"/>
-                                    <constraint firstAttribute="height" constant="240" id="GEj-PG-HdU"/>
+                                    <constraint firstAttribute="width" secondItem="txn-nc-z3S" secondAttribute="height" multiplier="1:1" id="hGD-R2-3QK"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txn-nc-z3S">
-                                <rect key="frame" x="10" y="354" width="394" height="394"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d48-u2-V3Q">
+                                <rect key="frame" x="45" y="43" width="324" height="324"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="394" id="NCd-lq-pGH"/>
-                                    <constraint firstAttribute="width" secondItem="txn-nc-z3S" secondAttribute="height" multiplier="1:1" id="hGD-R2-3QK"/>
-                                    <constraint firstAttribute="width" constant="394" id="ijM-Pz-RbV"/>
+                                    <constraint firstAttribute="width" secondItem="d48-u2-V3Q" secondAttribute="height" multiplier="1:1" id="1Yt-uS-XnM"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="txn-nc-z3S" firstAttribute="leading" secondItem="BBP-Cw-a2W" secondAttribute="leading" constant="10" id="3qh-5w-doe"/>
-                            <constraint firstItem="MuE-27-AH8" firstAttribute="leading" secondItem="BBP-Cw-a2W" secondAttribute="leading" constant="10" id="5RD-nz-6Yw"/>
-                            <constraint firstItem="d48-u2-V3Q" firstAttribute="top" secondItem="BBP-Cw-a2W" secondAttribute="top" constant="80" id="IWc-Qj-laR"/>
-                            <constraint firstItem="BBP-Cw-a2W" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MuE-27-AH8" secondAttribute="trailing" symbolic="YES" id="QIw-Ud-vlP"/>
-                            <constraint firstItem="d48-u2-V3Q" firstAttribute="centerX" secondItem="LxJ-Y7-g5y" secondAttribute="centerX" id="Xgn-Zf-GNk"/>
-                            <constraint firstItem="BBP-Cw-a2W" firstAttribute="bottom" secondItem="txn-nc-z3S" secondAttribute="bottom" constant="40" id="b9E-cz-9xs"/>
-                            <constraint firstItem="BBP-Cw-a2W" firstAttribute="trailing" secondItem="txn-nc-z3S" secondAttribute="trailing" constant="10" id="eF6-Cc-7J3"/>
-                            <constraint firstItem="MuE-27-AH8" firstAttribute="top" secondItem="BBP-Cw-a2W" secondAttribute="top" id="vyQ-Hv-c79"/>
+                            <constraint firstItem="BBP-Cw-a2W" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MuE-27-AH8" secondAttribute="trailing" symbolic="YES" id="1Pf-tA-Qga"/>
+                            <constraint firstItem="d48-u2-V3Q" firstAttribute="top" secondItem="MuE-27-AH8" secondAttribute="bottom" constant="10" id="2QB-P2-c7B"/>
+                            <constraint firstItem="d48-u2-V3Q" firstAttribute="centerX" secondItem="LxJ-Y7-g5y" secondAttribute="centerX" id="3cW-ts-aef"/>
+                            <constraint firstItem="MuE-27-AH8" firstAttribute="leading" secondItem="BBP-Cw-a2W" secondAttribute="leading" constant="10" id="4og-lh-y1O"/>
+                            <constraint firstItem="d48-u2-V3Q" firstAttribute="leading" secondItem="BBP-Cw-a2W" secondAttribute="leading" constant="45" id="A9c-ev-Qkw"/>
+                            <constraint firstItem="BBP-Cw-a2W" firstAttribute="trailing" secondItem="d48-u2-V3Q" secondAttribute="trailing" constant="45" id="BSC-4F-Gzo"/>
+                            <constraint firstItem="BBP-Cw-a2W" firstAttribute="trailing" secondItem="txn-nc-z3S" secondAttribute="trailing" constant="45" id="NsB-FL-Ucg"/>
+                            <constraint firstItem="txn-nc-z3S" firstAttribute="centerX" secondItem="LxJ-Y7-g5y" secondAttribute="centerX" id="bwh-am-FxP"/>
+                            <constraint firstItem="MuE-27-AH8" firstAttribute="top" secondItem="BBP-Cw-a2W" secondAttribute="top" id="dWv-t1-a6M"/>
+                            <constraint firstItem="txn-nc-z3S" firstAttribute="top" secondItem="d48-u2-V3Q" secondAttribute="bottom" constant="10" id="qhd-wV-WB7"/>
+                            <constraint firstItem="txn-nc-z3S" firstAttribute="leading" secondItem="BBP-Cw-a2W" secondAttribute="leading" constant="45" id="wMD-1f-SZN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BBP-Cw-a2W"/>
                     </view>
